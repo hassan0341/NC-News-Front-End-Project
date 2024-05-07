@@ -8,12 +8,22 @@ function getArticles() {
     });
 }
 
-function getArticleById(planet_id) {
+function getArticleById(article_id) {
   return axios
-    .get(`https://my-back-end-project.onrender.com/api/articles/${planet_id}`)
+    .get(`https://my-back-end-project.onrender.com/api/articles/${article_id}`)
     .then((response) => {
       return response.data.article;
     });
 }
 
-export { getArticles, getArticleById };
+function getCommentsByArticleID(article_id) {
+  return axios
+    .get(
+      `https://my-back-end-project.onrender.com/api/articles/${article_id}/comments`
+    )
+    .then((response) => {
+      return response.data.comments;
+    });
+}
+
+export { getArticles, getArticleById, getCommentsByArticleID };
