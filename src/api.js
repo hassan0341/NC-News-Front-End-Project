@@ -8,4 +8,12 @@ function getArticles() {
     });
 }
 
-export { getArticles };
+function getArticleById(planet_id) {
+  return axios
+    .get(`https://my-back-end-project.onrender.com/api/articles/${planet_id}`)
+    .then((response) => {
+      return response.data.article;
+    });
+}
+
+export { getArticles, getArticleById };
