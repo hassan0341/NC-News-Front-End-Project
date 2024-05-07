@@ -1,0 +1,32 @@
+.article-card {
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsla(0, 7%, 89%, 0.1);
+  padding: 20px;
+  margin: 15px;
+  max-width: 400px;
+  max-height: 300px;
+  display: inline-block;
+
+  transition: transform 0.2s;
+}
+
+.article-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.card-image {
+  max-width: 60%;
+  height: auto;
+  border-radius: 5%;
+}
+
+.card-title {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.card-topic {
+  margin-bottom: 0;
+}

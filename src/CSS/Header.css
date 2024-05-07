@@ -1,0 +1,9 @@
+.home-button {
+  padding: 10px 40px;
+  transition: transform 0.2s;
+}
+
+.home-button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
