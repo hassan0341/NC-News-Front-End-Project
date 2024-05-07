@@ -3,10 +3,12 @@ import "../CSS/Header.css";
 function Header() {
   return (
     <header>
-      <h1>Welcome to my Front End Project!</h1>
+      <h1 className="header">Welcome to my Front End Project!</h1>
       <p>Many awesome articles to read!</p>
       <Link to="/">
-        <button className="home-button">Home</button>
+        <button className="home-button">
+          <a className="home-text">Home</a>
+        </button>
       </Link>
     </header>
   );
