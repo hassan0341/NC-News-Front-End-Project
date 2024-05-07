@@ -7,13 +7,13 @@
   max-width: 400px;
   max-height: 300px;
   display: inline-block;
-
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.3s;
 }
 
 .article-card:hover {
   transform: scale(1.05);
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .card-image {
@@ -25,8 +25,46 @@
 .card-title {
   font-family: Arial, sans-serif;
   margin: 0;
+  color: white;
 }
 
 .card-topic {
-  margin-bottom: 0;
+  color: white;
+}
+
+.card-author {
+  color: white;
+}
+
+.article-card::after {
+  content: "Click me for more info!";
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.article-card:hover::after {
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .article-card {
+    max-width: 100%;
+    max-height: none;
+
+    .card-image {
+      max-width: 100%;
+    }
+
+    .card-title,
+    .card-topic,
+    .card-author {
+      font-size: 16px;
+    }
+  }
 }
