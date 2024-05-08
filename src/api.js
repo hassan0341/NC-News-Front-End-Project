@@ -26,4 +26,23 @@ function getCommentsByArticleID(article_id) {
     });
 }
 
-export { getArticles, getArticleById, getCommentsByArticleID };
+function patchVoteByArticleId(article_id, vote) {
+  return axios
+    .patch(
+      `https://my-back-end-project.onrender.com/api/articles/${article_id}`,
+      { inc_votes: vote }
+    )
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+}
+
+export {
+  getArticles,
+  getArticleById,
+  getCommentsByArticleID,
+  patchVoteByArticleId,
+};

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
 import Loading from "./Loading";
 import CommentsCard from "./CommentCard";
+import VoteArticle from "./VoteArticle";
 import "../CSS/SingleArticle.css";
 
 function SingleArticle() {
@@ -29,6 +30,7 @@ function SingleArticle() {
           alt="Sorry, this article has no image :("
         />
         <p>{article.body}</p>
+        <VoteArticle articleVotes={article.votes} />
         <CommentsCard />
       </div>
     );
