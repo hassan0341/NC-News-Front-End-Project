@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCommentsByArticleID } from "../api";
+import DeleteComment from "./DeleteComment";
 import "../CSS/CommentCard.css";
 
 function CommentsCard({ updateComments }) {
@@ -13,16 +14,27 @@ function CommentsCard({ updateComments }) {
     });
   }, [article_id, updateComments]);
 
+  const handleDelete = (comment_id) => {
+    const updatedComments = comments.filter(
+      (comment) => comment.comment_id !== comment_id
+    );
+    setComments(updatedComments);
+  };
+
   return (
     <section className="comment-section">
       <h2 className="com-title">Comments</h2>
       {comments.length === 0 ? (
         <p className="no-comments-msg">No comments here, yet 👀</p>
       ) : (
-        comments.map((comment, index) => (
-          <div key={index} className="single-comment">
+        comments.map((comment) => (
+          <div key={comment.comment_id} className="single-comment">
             <h3 className="user">User: {comment.author}</h3>
             <p className="comment">{comment.body}</p>
+            <DeleteComment
+              comment_id={comment.comment_id}
+              onDelete={handleDelete}
+            />
           </div>
         ))
       )}

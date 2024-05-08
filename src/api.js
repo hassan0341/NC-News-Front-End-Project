@@ -59,6 +59,12 @@ function getUsernames() {
     });
 }
 
+function deleteComment(comment_id) {
+  return axios.delete(
+    `https://my-back-end-project.onrender.com/api/comments/${comment_id}`
+  );
+}
+
 export {
   getArticles,
   getArticleById,
@@ -66,4 +72,5 @@ export {
   patchVoteByArticleId,
   postComment,
   getUsernames,
+  deleteComment,
 };
