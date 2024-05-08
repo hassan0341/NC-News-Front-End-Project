@@ -1,0 +1,58 @@
+.vote-article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.vote-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  margin-top: 10px;
+}
+
+.up-button,
+.down-button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  width: 110px;
+  height: 60px;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+  background-color: rgb(41, 39, 39);
+  transition: transform 0.2s;
+}
+
+.down-button:hover {
+  background-color: rgb(24, 20, 20);
+  transform: scale(1.05);
+}
+
+.up-button:hover {
+  background-color: rgb(24, 20, 20);
+  transform: scale(1.05);
+}
+
+.down-button:active {
+  transform: translateY(4px);
+}
+
+.up-button:active {
+  transform: translateY(4px);
+}
+
+.button:active {
+  background-color: black;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.vote-count {
+  font-size: 18px;
+  margin-top: 10px;
+}

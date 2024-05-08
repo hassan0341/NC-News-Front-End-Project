@@ -7,7 +7,7 @@ function Header() {
       <p>Many awesome articles to read!</p>
       <Link to="/">
         <button className="home-button">
-          <a className="home-text">Home</a>
+          <p className="home-text">Home</p>
         </button>
       </Link>
     </header>

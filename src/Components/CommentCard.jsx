@@ -16,14 +16,16 @@ function CommentsCard() {
   return (
     <section className="comment-section">
       <h2 className="com-title">Comments</h2>
-      {comments.map((comment, index) => {
-        return (
+      {comments.length === 0 ? (
+        <p className="no-comments-msg">No comments here, yet 👀</p>
+      ) : (
+        comments.map((comment, index) => (
           <div key={index} className="single-comment">
             <h3 className="user">User: {comment.author}</h3>
-            <h3 className="comment">{comment.body}</h3>
+            <p className="comment">{comment.body}</p>
           </div>
-        );
-      })}
+        ))
+      )}
     </section>
   );
 }
