@@ -5,10 +5,15 @@ import { Routes, Route } from "react-router-dom";
 
 import "./CSS/App.css";
 
+const hardcodedUser = {
+  username: "Gojo17",
+  userId: "123",
+};
+
 function App() {
   return (
     <>
-      <Header />
+      <Header user={hardcodedUser} />
       <Routes>
         <Route path="/" element={<ArticlesList />} />
         <Route path="/articles" element={<ArticlesList />} />

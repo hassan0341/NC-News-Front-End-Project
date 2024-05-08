@@ -4,7 +4,7 @@ import { postComment } from "../api";
 import AvailableUsers from "./AvailableUsers";
 import "../CSS/PostComment.css";
 
-function PostNewComment({ updateComments }) {
+function PostNewComment({ updateComments, user }) {
   const { article_id } = useParams();
 
   const [newComment, setNewComment] = useState({ username: "", body: "" });
