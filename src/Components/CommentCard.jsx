@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getCommentsByArticleID } from "../api";
 import "../CSS/CommentCard.css";
 
-function CommentsCard() {
+function CommentsCard({ updateComments }) {
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
 
@@ -11,7 +11,7 @@ function CommentsCard() {
     getCommentsByArticleID(article_id).then((commentData) => {
       setComments(commentData);
     });
-  }, [article_id]);
+  }, [article_id, updateComments]);
 
   return (
     <section className="comment-section">

@@ -1,0 +1,49 @@
+.comment-list {
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-list label {
+  margin-bottom: 10px;
+}
+
+.comment-list input[type="text"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.comment-list input[type="text"]:focus {
+  outline: none;
+}
+
+.comment-list button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.comment-list button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.comment-list button:active {
+  background-color: #004080;
+}
+
+.comment-confirmation {
+  color: green;
+}
