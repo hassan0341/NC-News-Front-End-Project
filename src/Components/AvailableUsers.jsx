@@ -15,8 +15,8 @@ function AvailableUsers() {
     <div className="available-usernames">
       <h3>Available Usernames:</h3>
       <ul>
-        {availableUsernames.map((user) => (
-          <li key={user.id}>{user.username}</li>
+        {availableUsernames.map((user, index) => (
+          <li key={index}>{user.username}</li>
         ))}
       </ul>
     </div>

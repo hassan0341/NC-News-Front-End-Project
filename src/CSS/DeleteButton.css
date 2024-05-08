@@ -1,0 +1,15 @@
+.delete-button {
+  font-size: 1rem;
+  font-size: bold;
+  padding: 5px 10px;
+  color: aliceblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5 ease;
+  background-color: hsl(10, 90%, 50%);
+}
+
+.delete-button:hover {
+  background-color: hsl(10, 90%, 40%);
+}
