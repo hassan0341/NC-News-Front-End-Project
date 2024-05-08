@@ -40,9 +40,30 @@ function patchVoteByArticleId(article_id, vote) {
     });
 }
 
+function postComment(article_id, commentData) {
+  return axios
+    .post(
+      `https://my-back-end-project.onrender.com/api/articles/${article_id}/comments`,
+      commentData
+    )
+    .then((response) => {
+      return response.data;
+    });
+}
+
+function getUsernames() {
+  return axios
+    .get("https://my-back-end-project.onrender.com/api/users")
+    .then((response) => {
+      return response.data.users;
+    });
+}
+
 export {
   getArticles,
   getArticleById,
   getCommentsByArticleID,
   patchVoteByArticleId,
+  postComment,
+  getUsernames,
 };
