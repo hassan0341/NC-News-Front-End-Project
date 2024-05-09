@@ -1,8 +1,12 @@
 import axios from "axios";
 
-function getArticles() {
+function getArticles(topic) {
   return axios
-    .get("https://my-back-end-project.onrender.com/api/articles")
+    .get("https://my-back-end-project.onrender.com/api/articles", {
+      params: {
+        topic: topic,
+      },
+    })
     .then((response) => {
       return response.data.articles;
     });
@@ -65,6 +69,14 @@ function deleteComment(comment_id) {
   );
 }
 
+function getTopics() {
+  return axios
+    .get("https://my-back-end-project.onrender.com/api/topics")
+    .then((response) => {
+      return response.data.topics;
+    });
+}
+
 export {
   getArticles,
   getArticleById,
@@ -73,4 +85,5 @@ export {
   postComment,
   getUsernames,
   deleteComment,
+  getTopics,
 };

@@ -7,7 +7,7 @@ import VoteArticle from "./VoteArticle";
 import PostNewComment from "./PostNewComment";
 import "../CSS/SingleArticle.css";
 
-function SingleArticle({ user }) {
+function SingleArticle() {
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const [comments, setComments] = useState([]);
@@ -42,8 +42,8 @@ function SingleArticle({ user }) {
         />
         <p>{article.body}</p>
         <VoteArticle articleVotes={article.votes} />
-        <PostNewComment updateComments={updateComments} user={user} />
-        <CommentsCard updateComments={updateComments} user={user} />
+        <PostNewComment updateComments={updateComments} />
+        <CommentsCard updateComments={updateComments} />
       </div>
     );
   }

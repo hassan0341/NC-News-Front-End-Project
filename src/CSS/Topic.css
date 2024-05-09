@@ -1,0 +1,34 @@
+.topics-container {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.topics-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.topics-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.topic-link {
+  text-decoration: none;
+  color: #fffbfb;
+}
+
+.topic-item {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: #060607;
+  transition: background-color 0.3s ease;
+}
+
+.topic-item:hover {
+  background-color: #222121;
+}

@@ -4,7 +4,7 @@ import { postComment } from "../api";
 import AvailableUsers from "./AvailableUsers";
 import "../CSS/PostComment.css";
 
-function PostNewComment({ updateComments, user }) {
+function PostNewComment({ updateComments }) {
   const { article_id } = useParams();
 
   const [newComment, setNewComment] = useState({ username: "", body: "" });
@@ -39,7 +39,7 @@ function PostNewComment({ updateComments, user }) {
             <input
               id="username"
               type="text"
-              placeholder="username here..."
+              placeholder="Username..."
               value={newComment.username}
               onChange={handleChange}
               name="username"
@@ -48,20 +48,21 @@ function PostNewComment({ updateComments, user }) {
           </div>
           <div>
             <label htmlFor="body">Comment: </label>
-            <input
+            <textarea
               id="body"
-              type="text"
-              placeholder="comment here..."
+              placeholder="Comment here..."
               value={newComment.body}
               onChange={handleChange}
               name="body"
               required
             />
-            <button type="submit">Post comment</button>
           </div>
-          {commentPosted && (
-            <p className="comment-confirmation">Comment posted!</p>
-          )}
+          <div>
+            <button type="submit">Post comment</button>
+            {commentPosted && (
+              <p className="comment-confirmation">Comment posted!</p>
+            )}
+          </div>
         </form>
       </div>
     </div>

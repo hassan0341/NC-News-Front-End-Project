@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../CSS/Header.css";
+
 function Header({ user }) {
   return (
     <header>
@@ -10,6 +11,11 @@ function Header({ user }) {
       <Link to="/">
         <button className="home-button">
           <p className="home-text">Home</p>
+        </button>
+      </Link>
+      <Link to="/topics">
+        <button className="topics-button">
+          <p className="topics-text">Topics</p>
         </button>
       </Link>
     </header>
