@@ -1,4 +1,4 @@
-import { deleteComment, getUsernames } from "../api";
+import { deleteComment } from "../api";
 import "../CSS/DeleteButton.css";
 
 function DeleteComment({ comment_id, onDelete }) {

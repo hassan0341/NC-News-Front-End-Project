@@ -1,4 +1,4 @@
-import "../CSS/Card.css";
+import "../CSS/ArticleCard.css";
 import { Link } from "react-router-dom";
 
 function ArticleCard(props) {
@@ -14,6 +14,9 @@ function ArticleCard(props) {
           src={article.article_img_url}
           alt="this article has no image, sorry :("
         />
+        <p>Created at: {article.created_at}</p>
+        <p>Comment count: {article.comment_count}</p>
+        <p>Votes: {article.votes}</p>
       </section>
     </Link>
   );

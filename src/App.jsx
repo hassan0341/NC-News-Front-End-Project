@@ -7,8 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import "./CSS/App.css";
 
 const hardcodedUser = {
-  username: "Gojo17",
-  userId: "123",
+  username: "jessjelly",
 };
 
 function App() {
