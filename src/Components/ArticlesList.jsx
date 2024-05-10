@@ -26,7 +26,11 @@ function ArticlesList() {
         setIsError(null);
       })
       .catch((error) => {
-        setIsError(error.response.data.msg);
+        if (error.response && error.response.status === 404) {
+          setIsError(error.response.data.msg);
+        } else {
+          setIsError(error.response.data.msg);
+        }
         setLoading(false);
       });
   }, [filterByTopic, sortBy, orderBy]);
