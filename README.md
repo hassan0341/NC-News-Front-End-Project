@@ -4,7 +4,7 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 ## Link to hosted site
 
-[Link to Deployed Version](https://sparkling-choux-c8472e.netlify.app/)
+[Link to Deployed Version](https://nc-news-react-app-12842324.netlify.app/)
 
 ## Description
 
