@@ -5,22 +5,30 @@ import Loading from "./Loading";
 import CommentsCard from "./CommentCard";
 import VoteArticle from "./VoteArticle";
 import PostNewComment from "./PostNewComment";
+import ErrorComponent from "./ErrorComponent";
 import "../CSS/SingleArticle.css";
 
 function SingleArticle() {
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const [comments, setComments] = useState([]);
+  const [isError, setIsError] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
     getArticleById(article_id).then((articleData) => {
       setArticle(articleData);
       setLoading(false);
+      setIsError(null);
     });
-    getCommentsByArticleID(article_id).then((commentData) => {
-      setComments(commentData);
-    });
+    getCommentsByArticleID(article_id)
+      .then((commentData) => {
+        setComments(commentData);
+      })
+      .catch((error) => {
+        setIsError(error.response.data.msg);
+        setLoading(false);
+      });
   }, [article_id]);
 
   const updateComments = () => {
@@ -29,24 +37,28 @@ function SingleArticle() {
     });
   };
 
-  if (loading) {
-    return <Loading />;
-  } else {
-    return (
-      <div id="single-article">
-        <h2>{article.title}</h2>
-        <p>Written by: {article.author}</p>
-        <img
-          src={article.article_img_url}
-          alt="Sorry, this article has no image :("
-        />
-        <p>{article.body}</p>
-        <VoteArticle articleVotes={article.votes} />
-        <PostNewComment updateComments={updateComments} />
-        <CommentsCard updateComments={updateComments} />
-      </div>
-    );
-  }
+  return (
+    <div id="single-article">
+      {loading ? (
+        <Loading />
+      ) : isError ? (
+        <ErrorComponent error={isError} />
+      ) : (
+        <>
+          <h2>{article.title}</h2>
+          <p>Written by: {article.author}</p>
+          <img
+            src={article.article_img_url}
+            alt="Sorry, this article has no image :("
+          />
+          <p>{article.body}</p>
+          <VoteArticle articleVotes={article.votes} />
+          <PostNewComment updateComments={updateComments} />
+          <CommentsCard updateComments={updateComments} />
+        </>
+      )}
+    </div>
+  );
 }
 
 export default SingleArticle;

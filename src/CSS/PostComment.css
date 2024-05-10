@@ -14,14 +14,18 @@
   margin-bottom: 10px;
 }
 
-.comment-list input[type="text"] {
+.comment-list input[type="text"],
+.comment-list textarea {
   padding: 10px;
   margin-bottom: 10px;
-  border: none;
+  border: 1px solid white;
   border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.comment-list input[type="text"]:focus {
+.comment-list input[type="text"]:focus,
+.comment-list textarea:focus {
   outline: none;
 }
 
@@ -33,6 +37,8 @@
   color: white;
   cursor: pointer;
   transition: transform 0.2s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .comment-list button:hover {
@@ -46,4 +52,11 @@
 
 .comment-confirmation {
   color: green;
+}
+
+@media screen and (max-width: 480px) {
+  .comment-list {
+    max-width: 100%;
+    padding: 10px;
+  }
 }
