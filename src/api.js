@@ -9,6 +9,9 @@ function getArticles(topic) {
     })
     .then((response) => {
       return response.data.articles;
+    })
+    .catch((error) => {
+      throw error;
     });
 }
 
@@ -17,6 +20,9 @@ function getArticleById(article_id) {
     .get(`https://my-back-end-project.onrender.com/api/articles/${article_id}`)
     .then((response) => {
       return response.data.article;
+    })
+    .catch((error) => {
+      throw error;
     });
 }
 
@@ -38,9 +44,6 @@ function patchVoteByArticleId(article_id, vote) {
     )
     .then((response) => {
       return response.data;
-    })
-    .catch((error) => {
-      throw error;
     });
 }
 
