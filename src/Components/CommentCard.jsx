@@ -4,7 +4,7 @@ import { getCommentsByArticleID } from "../api";
 import DeleteComment from "./DeleteComment";
 import "../CSS/CommentCard.css";
 
-function CommentsCard({ updateComments }) {
+function CommentsCard({ updateComments, user }) {
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
 
@@ -34,10 +34,12 @@ function CommentsCard({ updateComments }) {
           <div key={comment.comment_id} className="single-comment">
             <h3 className="user">User: {comment.author}</h3>
             <p className="comment">{comment.body}</p>
-            <DeleteComment
-              comment_id={comment.comment_id}
-              onDelete={handleDelete}
-            />
+            {comment.author === user && (
+              <DeleteComment
+                comment_id={comment.comment_id}
+                onDelete={handleDelete}
+              />
+            )}
           </div>
         ))
       )}
