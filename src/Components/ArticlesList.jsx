@@ -4,24 +4,22 @@ import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
 import DropDown from "./DropDown";
 import ErrorComponent from "./ErrorComponent";
-import sortArticles from "../utils/sorting";
 import { useSearchParams } from "react-router-dom";
 
 function ArticlesList() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchParams] = useSearchParams();
-  const [sortBy, setSortBy] = useState("created_at");
-  const [orderBy, setOrderBy] = useState("desc");
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isError, setIsError] = useState(null);
-  const filterByTopic = searchParams.get("topic");
+  const topic = searchParams.get("topic");
+  const sortBy = searchParams.get("sort_by") || "created_at";
+  const orderBy = searchParams.get("order") || "desc";
 
   useEffect(() => {
     setLoading(true);
-    getArticles(filterByTopic)
-      .then((articles) => {
-        const sortedArticles = sortArticles(articles, sortBy, orderBy);
-        setArticles(sortedArticles);
+    getArticles(topic, sortBy, orderBy)
+      .then((articlesData) => {
+        setArticles(articlesData);
         setLoading(false);
         setIsError(null);
       })
@@ -33,15 +31,19 @@ function ArticlesList() {
         }
         setLoading(false);
       });
-  }, [filterByTopic, sortBy, orderBy]);
+  }, [topic, sortBy, orderBy]);
 
   const handleSortChange = (option) => {
-    setSortBy(option);
-    setOrderBy("desc");
+    const params = new URLSearchParams(searchParams);
+    params.set("sort_by", option);
+    params.set("order", "desc");
+    setSearchParams(params);
   };
 
   const handleOrderChange = (option) => {
-    setOrderBy(option);
+    const params = new URLSearchParams(searchParams);
+    params.set("order", option);
+    setSearchParams(params);
   };
 
   return (
@@ -50,6 +52,8 @@ function ArticlesList() {
       <DropDown
         onSortChange={handleSortChange}
         onOrderChange={handleOrderChange}
+        currentSortBy={sortBy}
+        currentOrderBy={orderBy}
       />
       {loading ? (
         <Loading />

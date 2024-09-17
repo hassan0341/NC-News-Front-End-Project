@@ -1,28 +1,30 @@
 import "../CSS/DropDown.css";
 
-function DropDown({ onSortChange, onOrderChange }) {
+function DropDown({
+  onSortChange,
+  onOrderChange,
+  currentSortBy,
+  currentOrderBy,
+}) {
   const handleSortChange = (event) => {
-    const { value } = event.target;
-    onSortChange(value);
-    onOrderChange("desc");
+    onSortChange(event.target.value);
   };
 
   const handleOrderChange = (event) => {
-    const { value } = event.target;
-    onOrderChange(value);
+    onOrderChange(event.target.value);
   };
 
   return (
     <div className="dropdown">
       <button>Sort by</button>
       <div className="content">
-        <select onChange={handleSortChange}>
-          <option value="date">Date</option>
+        <select onChange={handleSortChange} value={currentSortBy}>
+          <option value="created_at">Date</option>
           <option value="comment_count">Comment count</option>
           <option value="votes">Votes</option>
         </select>
 
-        <select onChange={handleOrderChange}>
+        <select onChange={handleOrderChange} value={currentOrderBy}>
           <option value="desc">Descending</option>
           <option value="asc">Ascending</option>
         </select>
