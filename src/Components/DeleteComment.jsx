@@ -14,7 +14,7 @@ function DeleteComment({ comment_id, onDelete }) {
         onDelete(comment_id);
         setIsDeleting(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Failed to delete comment. Please try again.");
         setIsDeleting(false);
       });
@@ -22,7 +22,11 @@ function DeleteComment({ comment_id, onDelete }) {
 
   return (
     <div>
-      <button className="delete-button" onClick={handleDelete}>
+      <button
+        className="delete-button"
+        onClick={handleDelete}
+        disabled={isDeleting}
+      >
         {isDeleting ? "Deleting..." : "Delete"}
       </button>
       {error && <p className="error-message">{error}</p>}

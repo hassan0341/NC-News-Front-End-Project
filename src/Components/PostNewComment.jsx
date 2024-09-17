@@ -24,7 +24,7 @@ function PostNewComment({ updateComments, user }) {
 
       setTimeout(() => {
         setCommentPosted(false);
-      }, 3000);
+      }, 2000);
     });
   };
 
