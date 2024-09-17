@@ -54,7 +54,7 @@ function SingleArticle({ user }) {
           <p>{article.body}</p>
           <VoteArticle articleVotes={article.votes} />
           <PostNewComment updateComments={updateComments} user={user} />
-          <CommentsCard updateComments={updateComments} />
+          <CommentsCard updateComments={updateComments} user={user} />
         </>
       )}
     </div>

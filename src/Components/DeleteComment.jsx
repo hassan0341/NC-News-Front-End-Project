@@ -1,17 +1,32 @@
 import { deleteComment } from "../api";
 import "../CSS/DeleteButton.css";
+import { useState } from "react";
 
 function DeleteComment({ comment_id, onDelete }) {
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [error, setError] = useState(null);
+
   const handleDelete = () => {
-    deleteComment(comment_id).then(() => {
-      onDelete(comment_id);
-    });
+    setIsDeleting(true);
+    setError(null);
+    deleteComment(comment_id)
+      .then(() => {
+        onDelete(comment_id);
+        setIsDeleting(false);
+      })
+      .catch((err) => {
+        setError("Failed to delete comment. Please try again.");
+        setIsDeleting(false);
+      });
   };
 
   return (
-    <button className="delete-button" onClick={handleDelete}>
-      Delete
-    </button>
+    <div>
+      <button className="delete-button" onClick={handleDelete}>
+        {isDeleting ? "Deleting..." : "Delete"}
+      </button>
+      {error && <p className="error-message">{error}</p>}
+    </div>
   );
 }
 
