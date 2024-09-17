@@ -1,10 +1,12 @@
 import axios from "axios";
 
-function getArticles(topic) {
+function getArticles(topic, sortBy, orderBy) {
   return axios
     .get("https://my-back-end-project.onrender.com/api/articles", {
       params: {
         topic: topic,
+        sort_by: sortBy,
+        order: orderBy,
       },
     })
     .then((response) => {

@@ -11,7 +11,7 @@ function ArticlesList() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
-  const [sortBy, setSortBy] = useState("votes");
+  const [sortBy, setSortBy] = useState("created_at");
   const [orderBy, setOrderBy] = useState("desc");
   const [isError, setIsError] = useState(null);
   const filterByTopic = searchParams.get("topic");
