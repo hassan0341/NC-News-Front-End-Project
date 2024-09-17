@@ -4,9 +4,7 @@ import "../CSS/Header.css";
 function Header({ user }) {
   return (
     <header>
-      <h1 className="header">
-        Welcome to my Front End Project {user.username}!
-      </h1>
+      <h1 className="header">Welcome to my Front End Project {user}!</h1>
       <p>Many awesome articles to read!</p>
       <Link to="/">
         <button className="home-button">

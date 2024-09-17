@@ -8,7 +8,7 @@ import PostNewComment from "./PostNewComment";
 import ErrorComponent from "./ErrorComponent";
 import "../CSS/SingleArticle.css";
 
-function SingleArticle() {
+function SingleArticle({ user }) {
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const [comments, setComments] = useState([]);
@@ -53,7 +53,7 @@ function SingleArticle() {
           />
           <p>{article.body}</p>
           <VoteArticle articleVotes={article.votes} />
-          <PostNewComment updateComments={updateComments} />
+          <PostNewComment updateComments={updateComments} user={user} />
           <CommentsCard updateComments={updateComments} />
         </>
       )}

@@ -6,9 +6,7 @@ import { Routes, Route } from "react-router-dom";
 
 import "./CSS/App.css";
 
-const hardcodedUser = {
-  username: "jessjelly",
-};
+const hardcodedUser = "jessjelly";
 
 function App() {
   return (
@@ -17,7 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<ArticlesList />} />
         <Route path="/articles" element={<ArticlesList />} />
-        <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route
+          path="/articles/:article_id"
+          element={<SingleArticle user={hardcodedUser} />}
+        />
         <Route path="/topics" element={<Topics />} />
       </Routes>
     </>
