@@ -10,7 +10,10 @@ function CommentsCard({ updateComments }) {
 
   useEffect(() => {
     getCommentsByArticleID(article_id).then((commentData) => {
-      setComments(commentData);
+      const sortedComments = commentData.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
+      setComments(sortedComments);
     });
   }, [article_id, updateComments]);
 
