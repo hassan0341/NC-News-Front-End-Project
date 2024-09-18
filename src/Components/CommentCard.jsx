@@ -4,24 +4,12 @@ import { getCommentsByArticleID } from "../api";
 import DeleteComment from "./DeleteComment";
 import "../CSS/CommentCard.css";
 
-function CommentsCard({ updateComments, user }) {
-  const [comments, setComments] = useState([]);
-  const { article_id } = useParams();
-
-  useEffect(() => {
-    getCommentsByArticleID(article_id).then((commentData) => {
-      const sortedComments = commentData.sort(
-        (a, b) => new Date(b.created_at) - new Date(a.created_at)
-      );
-      setComments(sortedComments);
-    });
-  }, [article_id, updateComments]);
-
+function CommentsCard({ updateComments, user, comments }) {
   const handleDelete = (comment_id) => {
     const updatedComments = comments.filter(
       (comment) => comment.comment_id !== comment_id
     );
-    setComments(updatedComments);
+    updateComments(updatedComments);
   };
 
   return (
@@ -37,7 +25,7 @@ function CommentsCard({ updateComments, user }) {
             {comment.author === user && (
               <DeleteComment
                 comment_id={comment.comment_id}
-                onDelete={handleDelete}
+                onDelete={() => handleDelete(comment.comment_id)}
               />
             )}
           </div>

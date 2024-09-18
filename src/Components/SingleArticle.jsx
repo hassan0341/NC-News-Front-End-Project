@@ -9,11 +9,11 @@ import ErrorComponent from "./ErrorComponent";
 import "../CSS/SingleArticle.css";
 
 function SingleArticle({ user }) {
-  const [article, setArticle] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [comments, setComments] = useState([]);
-  const [isError, setIsError] = useState(null);
   const { article_id } = useParams();
+  const [article, setArticle] = useState({});
+  const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isError, setIsError] = useState(null);
 
   useEffect(() => {
     getArticleById(article_id).then((articleData) => {
@@ -23,7 +23,11 @@ function SingleArticle({ user }) {
     });
     getCommentsByArticleID(article_id)
       .then((commentData) => {
-        setComments(commentData);
+        const sortedComments = commentData.sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
+        setComments(sortedComments);
+        setLoading(false);
       })
       .catch((error) => {
         setIsError(error.response.data.msg);
@@ -33,7 +37,10 @@ function SingleArticle({ user }) {
 
   const updateComments = () => {
     getCommentsByArticleID(article_id).then((commentData) => {
-      setComments(commentData);
+      const sortedComments = commentData.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
+      setComments(sortedComments);
     });
   };
 
@@ -54,7 +61,11 @@ function SingleArticle({ user }) {
           <p>{article.body}</p>
           <VoteArticle articleVotes={article.votes} />
           <PostNewComment updateComments={updateComments} user={user} />
-          <CommentsCard updateComments={updateComments} user={user} />
+          <CommentsCard
+            updateComments={updateComments}
+            user={user}
+            comments={comments}
+          />
         </>
       )}
     </div>
