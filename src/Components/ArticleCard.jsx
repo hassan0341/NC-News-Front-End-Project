@@ -1,5 +1,5 @@
-import "../CSS/ArticleCard.css";
 import { Link } from "react-router-dom";
+import "../CSS/ArticleCard.css";
 
 function ArticleCard(props) {
   const { article } = props;

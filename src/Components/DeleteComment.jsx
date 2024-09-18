@@ -1,7 +1,7 @@
 import { deleteComment } from "../api";
-import "../CSS/DeleteButton.css";
 import { useState } from "react";
 import ErrorComponent from "./ErrorComponent";
+import "../CSS/DeleteButton.css";
 
 function DeleteComment({ comment_id, onDelete }) {
   const [isDeleting, setIsDeleting] = useState(false);

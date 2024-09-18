@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { getArticles } from "../api";
+import { useSearchParams } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
 import DropDown from "./DropDown";
 import ErrorComponent from "./ErrorComponent";
-import { useSearchParams } from "react-router-dom";
 
 function ArticlesList() {
   const [articles, setArticles] = useState([]);

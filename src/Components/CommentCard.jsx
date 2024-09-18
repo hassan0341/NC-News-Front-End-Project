@@ -1,7 +1,7 @@
-import DeleteComment from "./DeleteComment";
-import "../CSS/CommentCard.css";
 import { useContext } from "react";
 import { UserContext } from "../App";
+import DeleteComment from "./DeleteComment";
+import "../CSS/CommentCard.css";
 
 function CommentsCard({ updateComments, comments }) {
   const user = useContext(UserContext);
