@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getCommentsByArticleID } from "../api";
 import DeleteComment from "./DeleteComment";
 import "../CSS/CommentCard.css";
 
