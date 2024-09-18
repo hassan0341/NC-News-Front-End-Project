@@ -1,6 +1,7 @@
 import { deleteComment } from "../api";
 import "../CSS/DeleteButton.css";
 import { useState } from "react";
+import ErrorComponent from "./ErrorComponent";
 
 function DeleteComment({ comment_id, onDelete }) {
   const [isDeleting, setIsDeleting] = useState(false);
@@ -29,7 +30,7 @@ function DeleteComment({ comment_id, onDelete }) {
       >
         {isDeleting ? "Deleting..." : "Delete"}
       </button>
-      {error && <p className="error-message">{error}</p>}
+      {error && <ErrorComponent error={error} />}
     </div>
   );
 }

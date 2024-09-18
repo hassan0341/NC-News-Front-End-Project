@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { postComment } from "../api";
-
 import "../CSS/PostComment.css";
+import ErrorComponent from "./ErrorComponent";
 
 function PostNewComment({ updateComments, user }) {
   const { article_id } = useParams();
 
   const [newComment, setNewComment] = useState({ body: "" });
   const [commentPosted, setCommentPosted] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,15 +18,24 @@ function PostNewComment({ updateComments, user }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postComment(article_id, { ...newComment, username: user }).then(() => {
-      updateComments();
-      setCommentPosted(true);
-      setNewComment({ body: "" });
+    postComment(article_id, { ...newComment, username: user })
+      .then(() => {
+        updateComments();
 
-      setTimeout(() => {
+        setCommentPosted(true);
+
+        setNewComment({ body: "" });
+
+        setError(null);
+
+        setTimeout(() => {
+          setCommentPosted(false);
+        }, 2000);
+      })
+      .catch(() => {
+        setError("Failed to post comment. Please try again.");
         setCommentPosted(false);
-      }, 2000);
-    });
+      });
   };
 
   return (
@@ -46,9 +56,12 @@ function PostNewComment({ updateComments, user }) {
           </div>
           <div>
             <button type="submit">Post comment</button>
-            {commentPosted && (
-              <p className="comment-confirmation">Comment posted!</p>
+            {commentPosted && !error && (
+              <p className="comment-confirmation" role="alert">
+                Comment posted!
+              </p>
             )}
+            {error && <ErrorComponent error={error} />}
           </div>
         </form>
       </div>
