@@ -47,7 +47,7 @@ function ArticlesList() {
   };
 
   return (
-    <div id="article-list">
+    <main id="article-list">
       <h2 className="article-list-title">List of Articles:</h2>
       <DropDown
         onSortChange={handleSortChange}
@@ -66,7 +66,7 @@ function ArticlesList() {
           })}
         </ul>
       )}
-    </div>
+    </main>
   );
 }
 
