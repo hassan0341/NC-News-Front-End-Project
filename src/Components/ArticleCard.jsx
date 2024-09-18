@@ -12,9 +12,9 @@ function ArticleCard(props) {
         <img
           className="card-image"
           src={article.article_img_url}
-          alt="this article has no image, sorry :("
+          alt={article.title + " article image"}
         />
-        <p>Created at: {article.created_at}</p>
+        <p>Created at: {new Date(article.created_at).toLocaleDateString()}</p>
         <p>Comment count: {article.comment_count}</p>
         <p>Votes: {article.votes}</p>
       </section>

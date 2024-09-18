@@ -56,7 +56,7 @@ function SingleArticle() {
           <p>Written by: {article.author}</p>
           <img
             src={article.article_img_url}
-            alt="Sorry, this article has no image :("
+            alt={article.title + " article image"}
           />
           <p>{article.body}</p>
           <VoteArticle articleVotes={article.votes} />
