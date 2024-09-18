@@ -3,8 +3,11 @@ import { useParams } from "react-router-dom";
 import { postComment } from "../api";
 import "../CSS/PostComment.css";
 import ErrorComponent from "./ErrorComponent";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
-function PostNewComment({ updateComments, user }) {
+function PostNewComment({ updateComments }) {
+  const user = useContext(UserContext);
   const { article_id } = useParams();
 
   const [newComment, setNewComment] = useState({ body: "" });

@@ -1,7 +1,10 @@
 import DeleteComment from "./DeleteComment";
 import "../CSS/CommentCard.css";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
-function CommentsCard({ updateComments, user, comments }) {
+function CommentsCard({ updateComments, comments }) {
+  const user = useContext(UserContext);
   const handleDelete = (comment_id) => {
     const updatedComments = comments.filter(
       (comment) => comment.comment_id !== comment_id

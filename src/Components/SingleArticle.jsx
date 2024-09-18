@@ -8,7 +8,7 @@ import PostNewComment from "./PostNewComment";
 import ErrorComponent from "./ErrorComponent";
 import "../CSS/SingleArticle.css";
 
-function SingleArticle({ user }) {
+function SingleArticle() {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
@@ -60,12 +60,8 @@ function SingleArticle({ user }) {
           />
           <p>{article.body}</p>
           <VoteArticle articleVotes={article.votes} />
-          <PostNewComment updateComments={updateComments} user={user} />
-          <CommentsCard
-            updateComments={updateComments}
-            user={user}
-            comments={comments}
-          />
+          <PostNewComment updateComments={updateComments} />
+          <CommentsCard updateComments={updateComments} comments={comments} />
         </>
       )}
     </div>

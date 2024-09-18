@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import "../CSS/Header.css";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
-function Header({ user }) {
+function Header() {
+  const user = useContext(UserContext);
   return (
     <header>
       <h1 className="header">Welcome to my Front End Project {user}!</h1>
