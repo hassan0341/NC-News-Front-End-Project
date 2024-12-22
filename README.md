@@ -6,9 +6,6 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 [Link to Deployed Version](https://nc-news-react-app-12842324.netlify.app/)
 
-## Description
-
-Brief description of your app goes here. Explain what the project is about and its main features.
 
 ## Backend Repository
 
@@ -25,7 +22,7 @@ To run this project locally, follow these steps:
 1. **Clone the repository:**
 
 ```sh
-git clone https://github.com/hassan0341/My-Back-End-Project.git
+git clone https://github.com/hassan0341/NC-News-Front-End-Project.git
 ```
 
 2. **Navigate to the project directory:**
